@@ -83,4 +83,3 @@ Create your solution:
 > game.score(nil)
 => 0
 ```
-

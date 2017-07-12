@@ -6,4 +6,6 @@ require 'pry'
 
 class GameReaderTest < Minitest::Test
 
+
+
 end
