@@ -3,8 +3,8 @@ class Scrabble
   attr_reader :players
 
 
-  def initialize(player = Player.new("Bob"))
-    @players = [player]
+  def initialize
+    # @players = [player]
     @point_values ={
               "A"=>1, "B"=>3, "C"=>3, "D"=>2,
               "E"=>1, "F"=>4, "G"=>2, "H"=>4,
@@ -16,9 +16,9 @@ class Scrabble
             }
   end
 
-  def player_turn(player, word)
-    player.score += word.score
-  end
+  # def player_turn(player, word)
+  #   player.score += word.score
+  # end
 
 
   def score(word)
@@ -35,10 +35,27 @@ class Scrabble
     sum
   end
 
-    def add_player(player)
-      person = Player.new(player)
-      @players << person
+  def score_with_multipliers(word, letter_mult, mult_tot = 1)
+    letters = word.chars
+    letter_mult
+    if letter_mult.length != letters.length
+      puts "multiplication array doesn't match word length"
     end
+    score_array = []
+    letters.each_with_index do |letter, index|
+      score_array << @point_values[letter.upcase] * letter_mult[index]
+    end
+    sum = 0
+    score_array.each do |score|
+      sum += score
+    end
+    sum * mult_tot
+  end
+
+    # def add_player(player)
+    #   person = Player.new(player)
+    #   @players << person
+    # end
 
 
   # def point_values
